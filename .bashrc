@@ -7,3 +7,6 @@ alias ew='emacsclient -c' # GUI. Create frame
 alias avas='aws-vault exec audioscience_poweruser_assumerole --prompt=terminal -- '
 alias avas1='aws-vault exec audioscience_poweruser_assumerole --duration=1h -- '
 alias avas1env="aws-vault exec audioscience_poweruser_assumerole --duration=1h -- env | grep AWS | sed 's/\(.*\)=\(.*\)/export \1=\"\2\"/g' | pbcopy "
+
+# Setting TERM so that colors are the same in and out of tmux sessions
+export TERM=xterm-256color
