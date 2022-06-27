@@ -8,6 +8,42 @@
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "John Doe"
       user-mail-address "john@doe.com")
+
+;; Increasing granularity of Emacs undo
+(setq evil-want-fine-undo t)
+
+;; Shortcut for diary / dailies
+;; (map! :leader
+;;       :desc "Org Roam Go to Date"
+;;       "d" #'org-roam-dailies-goto-date)
+
+;; Setting a variable through key binding
+;; Setting a variable with a custom value : https://stackoverflow.com/questions/378972/how-do-i-make-an-emacs-keybinding-to-set-a-variable
+(defun toggle-emphasis-markers()
+  "Toggle emphasis markers"
+  (interactive) ;; You need to make a function interactive to call it with keybindings
+  (setq org-hide-emphasis-markers nil))
+
+(map! :after org
+      :map org-mode-map
+      :leader
+      :desc "Toggle emphasis markers"
+      "d" #'toggle-emphasis-markers)
+
+;; How do I make TAB insert the current completion?
+;; https://github.com/company-mode/company-mode/issues/640
+;; :bind (:map company-active-map ("<tab>" . company-complete-selection))
+;; Wait for company to load
+;; SPC h m : describe-mode to check details and keymap of company mode
+;; Deactivate return and remap tab mapping
+(map! :after company
+      :map company-active-map
+      "<tab>" #'company-complete-selection
+      "TAB" #'company-complete-selection
+      "<return>" nil
+      "RET" nil)
+
+
 ;; Making emacs find latex (so that C-c C-x C-l works on orgmode)
 (setenv "PATH" (concat ":/Library/TeX/texbin/" (getenv "PATH")))
 (add-to-list 'exec-path "/Library/TeX/texbin/")

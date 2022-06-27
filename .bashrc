@@ -22,4 +22,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source .bashrc_work
+source ~/.bashrc_work
