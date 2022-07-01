@@ -49,3 +49,4 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 (package! ztree)
+;;(package! org-modern) Doesn't look that aesthetic in most themes

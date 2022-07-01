@@ -43,6 +43,14 @@
       "<return>" nil
       "RET" nil)
 
+;; Changing evil-escape key chord to jj instead of jk
+;; https://github.com/doomemacs/doomemacs/blob/44eb11c028b9372e6f121639cea538da5b8d23b7/modules/editor/evil/config.el#L256
+;; https://github.com/doomemacs/doomemacs/issues/1946
+(after! evil-escape (setq evil-escape-key-sequence "jj"))
+
+;; Customize doom-modeline
+(display-battery-mode t)
+(display-time-mode t)
 
 ;; Making emacs find latex (so that C-c C-x C-l works on orgmode)
 (setenv "PATH" (concat ":/Library/TeX/texbin/" (getenv "PATH")))
