@@ -3,6 +3,14 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+;; set overall transparency. even text will be transparent
+;; you can also use doom/set-frame-opacity
+;; emacs-29 has background only transparency but doom doesn't support v29
+(add-to-list 'default-frame-alist '(alpha . 95))
+
+
+;; pointing python command to conda version for org babel
+(setq org-babel-python-command "/Users/aswin/miniconda/bin/python")
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
@@ -29,6 +37,97 @@
       :leader
       :desc "Toggle emphasis markers"
       "d" #'toggle-emphasis-markers)
+
+;; instead of a toggle, set org-agenda-start-with-log-mode to t to
+;; start agenda in log mode by default
+;; (map! :after org
+;;      :map org-mode-map
+;;      :leader
+;;      :desc "Org Agenda Log Mode"
+;;      "l" #'org-agenda-log-mode)
+
+;; adding deeplinks for zotero
+(after! org
+  ;; custom link types
+(org-link-set-parameters "zotero"
+  :follow (lambda (path) (shell-command (concat "open zotero:" path))))
+;; add timestamp when completing tasks
+(setq org-log-done t)
+;; always open org-agenda in log-mode
+;; https://stackoverflow.com/questions/22394394/orgmode-a-report-of-tasks-that-are-done-within-the-week
+(setq org-agenda-start-with-log-mode t)
+;; Latex preview font is too tiny. Increase scale
+(plist-put org-format-latex-options :scale 4.0)
+
+;; automatically create a CREATED timestamp in property drawer
+;; https://emacs.stackexchange.com/questions/35751/how-to-add-a-created-field-to-any-todo-task
+;; it fits the standard formatting - SCHEDULED, DEADLINE and CLOSED under heading,
+;; CREATED in property drawer
+;; https://www.reddit.com/r/orgmode/comments/q6myiz/are_timestamps_allowed_inside_the_properties/
+;; (defun my/log-todo-creation-date (&rest ignore)
+;;   "Log TODO creation time in the property drawer under the key 'CREATED'."
+;;   (when (and (org-get-todo-state)
+;;              (not (org-entry-get nil "CREATED")))
+;;     (org-entry-put nil "CREATED" (format-time-string (cdr org-time-stamp-formats)))))
+
+;; (advice-add 'org-insert-todo-heading :after #'my/log-todo-creation-date)
+;; (advice-add 'org-insert-todo-heading-respect-content :after #'my/log-todo-creation-date)
+;; (advice-add 'org-insert-todo-subheading :after #'my/log-todo-creation-date)
+;; (add-hook 'org-after-todo-state-change-hook #'my/log-todo-creation-date)
+
+
+;; default doom bindings for org-mode are defined in ~/.emacs.d/modules/lang/org/config.el
+;; use below bindings to overwrite
+;; https://github.com/doomemacs/doomemacs/issues/516
+;;  (setq org-todo-keywords
+;;        '((sequence
+        ;;    "TODO(t!)"  ; A task that needs doing & is ready to do
+        ;;    "PROJ(p)"  ; A project, which usually contains other tasks
+        ;;    "LOOP(r)"  ; A recurring task
+        ;;    "STRT(s)"  ; A task that is in progress
+        ;;    "WAIT(w)"  ; Something external is holding up this task
+        ;;    "HOLD(h)"  ; This task is paused/on hold because of me
+        ;;    "IDEA(i)"  ; An unconfirmed and unapproved task or notion
+        ;;    "|"
+        ;;    "DONE(d)"  ; Task successfully completed
+        ;;    "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
+        ;;   (sequence
+        ;;    "[ ](T)"   ; A task that needs doing
+        ;;    "[-](S)"   ; Task is in progress
+        ;;    "[?](W)"   ; Task is being held up or paused
+        ;;    "|"
+        ;;    "[X](D)")  ; Task was completed
+        ;;   (sequence
+        ;;    "|"
+        ;;    "OKAY(o)"
+        ;;    "YES(y)"
+        ;;    "NO(n)"))
+        ;; org-todo-keyword-faces
+        ;; '(("[-]"  . +org-todo-active)
+        ;;   ("STRT" . +org-todo-active)
+        ;;   ("[?]"  . +org-todo-onhold)
+        ;;   ("WAIT" . +org-todo-onhold)
+        ;;   ("HOLD" . +org-todo-onhold)
+        ;;   ("PROJ" . +org-todo-project)
+        ;;   ("NO"   . +org-todo-cancel)
+        ;;   ("KILL" . +org-todo-cancel)))
+)
+
+;; heic heif support - partial. opens images inside emacs if you do
+;; SPC m a o > open attachment. However, doesn't open outside by default and
+;; inline display doesn't work anyway. Atleast, not like this.
+;; Ask in reddit. Until then, keep the default so you can open Preview with the image
+;; by pressing RET
+;;(when (and (image-type-available-p 'image-io)
+;;            (not (boundp 'imagemagick-render-type)))
+;;      ;; Image I/O is used as a fallback of ImageMagick.
+;;      (setq imagemagick-enabled-types t)
+;;      (setq imagemagick-types-inhibit
+;;            (cons 'XML (delq 'PDF imagemagick-types-inhibit)))
+;;      (imagemagick-register-types))
+
+;; Dont cache gpg pass
+(setq epa-file-cache-passphrase-for-symmetric-encryption nil)
 
 ;; How do I make TAB insert the current completion?
 ;; https://github.com/company-mode/company-mode/issues/640
@@ -162,7 +261,7 @@
 (setq org-roam-mode-sections
       (list #'org-roam-backlinks-section
             #'org-roam-reflinks-section
-            #'org-roam-unlinked-references-section
+            ;#'org-roam-unlinked-references-section
             ))
 
 ; drag drop attachments
