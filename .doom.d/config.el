@@ -9,6 +9,18 @@
 (add-to-list 'default-frame-alist '(alpha . 95))
 
 
+;; option key stops working when using an external keyboard
+;; it's a bug:
+;; For some reason macOS reports all the rebound modifiers on the external keyboard as "right" modifiers, even if you're using the "left" modifiers.
+;; Doom is binding ns-right-option-modifier to 'none, so in this situation neither of the option keys on the external keyboard will act as 'meta.
+;; https://github.com/hlissner/doom-emacs/issues/3952#issuecomment-716608614
+(setq mac-command-modifier      'super
+      ns-command-modifier       'super
+      mac-option-modifier       'meta
+      ns-option-modifier        'meta
+      mac-right-option-modifier 'meta
+      ns-right-option-modifier  'meta)
+
 ;; pointing python command to conda version for org babel
 (setq org-babel-python-command "/Users/aswin/miniconda/bin/python")
 

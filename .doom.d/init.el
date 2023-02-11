@@ -15,6 +15,7 @@
 ;;      directory (for easy access to its source code).
 
 (doom! :input
+       ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
@@ -27,7 +28,7 @@
        vertico           ; the search engine of the future
 
        :ui
-       deft              ; notational velocity for Emacs
+       ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
@@ -45,7 +46,7 @@
        ;;tabs              ; a tab bar for Emacs
        treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
-       vc-gutter         ; vcs diff in the fringe
+       (vc-gutter +pretty) ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
@@ -104,6 +105,7 @@
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
+       ;;tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
@@ -143,8 +145,7 @@
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
-       latex              ; writing papers in Emacs has never been so fun
-       ; +lsp)              ; language server for ide-like features
+       latex             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        ;;lua               ; one-based indices? one-based indices
@@ -152,10 +153,10 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org                ; organize your plain life in plain text
-        +dragndrop         ; drag and drop files
-        +pretty            ; prettify org
-        +roam2)            ; org roam for knowledge management
+       (org               ; organize your plain life in plain text
+        +dragndrop        ; drag and drop files as attachments
+        +pretty           ; prettify org
+        +roam2)           ; org roam for knowledge management
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -163,10 +164,10 @@
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
-       ;;rest              ; Emacs as a REST client
+       rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       ;;(rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor

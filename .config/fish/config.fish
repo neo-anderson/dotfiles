@@ -14,3 +14,4 @@ else
   # echo shell is not interactive
   # ps -wfp %self
 end
+
