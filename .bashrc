@@ -22,5 +22,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Source work related config too
-source ~/.bashrc_work
+# Source work related config too. Run this manually because it takes a while every time shell session starts
+# source ~/.bashrc_work

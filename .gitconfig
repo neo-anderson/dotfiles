@@ -1,8 +1,10 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Aswin
+	name = Neo Anderson
 	email = hi.aswin@gmail.com
 [credential]
 	helper = osxkeychain
 [core]
 	ignorecase = false
+[url "git@github.com:"]
+	insteadOf = https://github.com/

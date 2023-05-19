@@ -50,6 +50,31 @@
       :desc "Toggle emphasis markers"
       "d" #'toggle-emphasis-markers)
 
+;; (use-package! org-transclusion
+;;   :after org
+;;   :init
+;;   (map!
+;;    :map global-map "<f12>" #'org-transclusion-add
+;;    :leader
+;;    :prefix "n"
+;;    (:desc "Org Transclusion" :prefix "t"
+;;    :desc "Toggle Org Transclusion Mode" "t" #'org-transclusion-mode
+;;    :desc "Add all" "a" #'org-transclusion-add-all)))
+;; replaces Todo List from the menu. Access todo list through agenda menu
+
+(use-package! org-transclusion
+  :after org
+  :init
+  ;; (setq org-transclusion-include-first-section nil) ;; removes the entire first section including all notes above the first heading
+  (setq org-transclusion-exclude-elements '(property-drawer keyword)) ;; remove only the keywords at the top of the first section.
+  (map! (:leader
+        (:desc "notes" :prefix "n"
+         (:desc "Org Transclusion" :prefix "z" ;; overriding "t" throws error
+          :desc "Add" :nv "a" #'org-transclusion-add
+          :desc "Add all" :nv "A" #'org-transclusion-add-all
+          :desc "Make from link" :nv "m" #'org-transclusion-make-from-link
+          :desc "Toggle org transclusion mode" :nv "t" #'org-transclusion-mode)))))
+
 ;; instead of a toggle, set org-agenda-start-with-log-mode to t to
 ;; start agenda in log mode by default
 ;; (map! :after org
@@ -217,6 +242,7 @@
 ;;
 ;;
 ;; dark
+;; modus-vivendi
 ;; doom-one
 ;; doom-horizon
 ;; doom-laserwave
@@ -230,6 +256,8 @@
 ;; doom-tokyo-night
 
 ;; light
+;; modus-operandi
+;; doom-acario-light
 ;; doom-plain
 ;; doom-homage-white
 ;; doom-ayu-light

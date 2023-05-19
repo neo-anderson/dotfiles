@@ -51,3 +51,4 @@
 
 (package! ztree) ;; Like Beyond Compare for Emacs
 ;;(package! org-modern) Doesn't look that aesthetic in most themes
+(package! org-transclusion) ;; Org-transclusion lets you insert a copy of text content via a file link or ID link within an Org file.

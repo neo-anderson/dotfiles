@@ -5,3 +5,8 @@ yabai -m config left_padding   20
 yabai -m config right_padding  20
 yabai -m config window_gap     20
 yabai -m config layout bsp
+
+# ignore list
+yabai -m rule --add app="^(System Preferences|1Password|Finder|Things|UTM|Music|Activity Monitor|QuickTime Player|zoom.us|Alfred Preferences)$" manage=off
+yabai -m rule --add title='Preferences$' manage=off topmost=on
+# if topmost=on doesn't work, change topmost=on to layer=above or delete it.
