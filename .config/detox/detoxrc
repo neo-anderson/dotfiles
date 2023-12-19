@@ -1,0 +1,8 @@
+sequence default {
+  wipeup {
+    remove_trailing;
+  };
+  max_length {
+    length 50;
+  };
+};
