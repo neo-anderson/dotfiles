@@ -6,7 +6,7 @@
 ;; set overall transparency. even text will be transparent
 ;; you can also use doom/set-frame-opacity
 ;; emacs-29 has background only transparency but doom doesn't support v29
-(add-to-list 'default-frame-alist '(alpha . 95))
+;; (add-to-list 'default-frame-alist '(alpha . 95))
 
 ;; to speed up scrolling and rendering
 ;; didnt work! (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
@@ -208,8 +208,10 @@
 ;;
 ;;Default font didn't have *bold* face. Setting Fira Code fixed this.
 ;;https://github.com/railwaycat/homebrew-emacsmacport/issues/233
-(setq doom-font (font-spec :family "Unifont" :size 12))
-(setq doom-unicode-font (font-spec :family "Unifont" :size 12))
+;; (setq doom-font (font-spec :family "Unifont" :size 12))
+;; (setq doom-unicode-font (font-spec :family "Unifont" :size 12))
+(setq doom-font (font-spec :family "Fira Code" :size 12))
+(setq doom-unicode-font (font-spec :family "Fira Code" :size 12))
 ;; Fonts like Fira Code and JetBrains Mono do not align text properly when emojis are involved. Messes up tables
 ;; (setq doom-font (font-spec :family "Fira Code" :size 12))
 ;; pseudo "live preview" - hide markup

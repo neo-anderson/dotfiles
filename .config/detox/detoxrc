@@ -3,6 +3,6 @@ sequence default {
     remove_trailing;
   };
   max_length {
-    length 50;
+    length 150;
   };
 };
